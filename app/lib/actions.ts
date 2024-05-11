@@ -54,6 +54,11 @@ export async function createInvoice(prevState: State, formData: FormData) {
         VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
       `;
   } catch (error) {
+    /*
+    TODO: Possible error below, entered value was 66.6
+    error: invalid input syntax for type integer: "6659.999999999999"
+    convert amountInCents to an integer, or use money input
+     */
     return {
       message: 'Database Error: Failed to Create Invoice',
     };
